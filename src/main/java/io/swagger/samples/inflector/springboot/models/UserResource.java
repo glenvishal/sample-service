@@ -10,10 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import io.swagger.samples.inflector.springboot.user.User;
+import io.swagger.samples.inflector.springboot.user.UserRowMapper;
+
 @Component
 public class UserResource implements Resource {
   @Autowired
   private JdbcTemplate jdbcTemplate;
+  
+    
+  private String name_sql = "SELECT Name FROM UserDetails";
+  private String dob_sql = "SELECT DoB FROM UserDetails";
 
   @Override
   public List<Link> getLinks() {
@@ -21,7 +28,12 @@ public class UserResource implements Resource {
   }
 
   public String getSurname() {
-    throw new NotImplementedException("TODO");
+	  
+	User user = (User)jdbcTemplate.queryForObject(name_sql, new UserRowMapper());
+	String fullName = user.getName();
+	
+	//throw new NotImplementedException("TODO");
+	return fullName.substring(0, fullName.indexOf(","));
   }
 
 }

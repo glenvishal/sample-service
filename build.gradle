@@ -63,6 +63,7 @@ dependencies {
   compile('org.springframework.boot:spring-boot-starter-jdbc')
   compile ('org.springframework.ws:spring-ws-core')
   compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+  compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final'
 
   compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
 
