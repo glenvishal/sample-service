@@ -1,5 +1,8 @@
 buildscript {
-  ext { springBootVersion = '1.4.2.RELEASE' }
+  ext { 
+    springBootVersion = '1.5.9.RELEASE'
+    cucumberVersion = '2.3.1'
+  }
   repositories {
     jcenter()
     mavenCentral()
@@ -68,8 +71,9 @@ dependencies {
   compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
 
   testCompile('org.springframework.boot:spring-boot-starter-test')
-  testCompile group: 'info.cukes', name: 'cucumber-junit', version:'1.2.5'
-  testCompile group: 'info.cukes', name: 'cucumber-spring', version:'1.2.5'
+  testCompile("io.cucumber:cucumber-java:${cucumberVersion}")
+  testCompile("io.cucumber:cucumber-junit:${cucumberVersion}")
+  testCompile("io.cucumber:cucumber-spring:${cucumberVersion}")
   testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'
   testCompile('com.h2database:h2')
 
